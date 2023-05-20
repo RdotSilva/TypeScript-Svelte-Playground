@@ -1,5 +1,13 @@
 <script>
   let count = 0;
+  let countTwo = 0;
+
+  const getTotal = () => {
+    return count + countTwo;
+  };
+
+  // Won't work as the count values are not reactive
+  $: countTotal = `The count total is ${getTotal()}`;
 
   // let countClick;
 
@@ -13,12 +21,17 @@
   const increment = () => {
     count += 1;
   };
+
+  const incrementTwo = () => {
+    count += 1;
+  };
 </script>
 
 <h3>{countClick}</h3>
 <h3>You can clicked {count} times</h3>
 
 <button on:click={increment}>Clicks {count}</button>
+<button on:click={incrementTwo}>Clicks {countTwo}</button>
 
 <style>
   button {

@@ -2,6 +2,14 @@
   let count = 0;
   let countTwo = 0;
 
+  const setCountTwo = (newCount) => {
+    countTwo = newCount;
+  };
+
+  // Order of the statements is important 
+  $: setCountTwo(count);
+  $: countTwoTotal = `countTwo is ${countTwo}`;
+
   const getTotal = () => {
     return count + countTwo;
   };

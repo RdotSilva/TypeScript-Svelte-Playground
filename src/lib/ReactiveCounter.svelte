@@ -28,4 +28,8 @@
 <button on:click={increment}>Clicks {count}</button>
 <button on:click={incrementTwo}>Clicks {countTwo}</button>
 
-
+<style>
+  button {
+    padding: 15px 20px;
+  }
+</style>

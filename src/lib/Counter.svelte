@@ -1,4 +1,8 @@
 <script>
+  // Adding props
+  export let initialCount;
+  export let maxCount;
+
   let count = 0;
   let countTwo = 0;
 
@@ -6,7 +10,7 @@
     countTwo = newCount;
   };
 
-  // Order of the statements is important 
+  // Order of the statements is important
   $: setCountTwo(count);
   $: countTwoTotal = `countTwo is ${countTwo}`;
 

@@ -2,7 +2,7 @@
   import Counter from "./lib/Counter.svelte";
 </script>
 
-<Counter />
+<Counter initialCount={3} maxCount="10" />
 
 <style>
 </style>

@@ -1,8 +1,13 @@
 <script>
   import Counter from "./lib/Counter.svelte";
+
+  const counterProps = {
+    maxCount: 10,
+    initialCount: 3,
+  };
 </script>
 
-<Counter initialCount={3} maxCount="10" />
+<Counter {...counterProps} />
 
 <style>
 </style>

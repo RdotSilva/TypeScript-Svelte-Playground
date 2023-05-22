@@ -3,7 +3,7 @@
   export let initialCount;
   export let maxCount;
 
-  let count = 0;
+  let count = initialCount;
   let countTwo = 0;
 
   const setCountTwo = (newCount) => {
@@ -31,6 +31,7 @@
   }
 
   const increment = () => {
+    if (count === maxCount) return;
     count += 1;
   };
 

@@ -1,4 +1,6 @@
 <script>
+  export let shouldCount;
+
   let count = 0;
   let countTwo = 0;
 

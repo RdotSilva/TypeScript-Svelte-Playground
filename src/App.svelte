@@ -1,4 +1,5 @@
 <script>
+  import Button from "./lib/Button.svelte";
   import Counter from "./lib/Counter.svelte";
   import ReactiveCounter from "./lib/ReactiveCounter.svelte";
 
@@ -7,6 +8,8 @@
     initialCount: 3,
   };
 </script>
+
+<Button />
 
 <Counter {...counterProps} />
 

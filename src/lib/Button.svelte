@@ -1,1 +1,4 @@
-<button> My Button </button>
+<script>
+</script>
+
+<button> <slot>Fallback</slot> </button>

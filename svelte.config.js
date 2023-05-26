@@ -4,7 +4,7 @@ import preprocess from "svelte-preprocess";
 
 export const config = {
   preprocess: preprocess({
-    scss: {},
+    scss: { preprendData: "" },
   }),
 };
 

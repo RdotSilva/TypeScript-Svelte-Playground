@@ -4,7 +4,7 @@
 <button> <slot>Fallback</slot> </button>
 
 <style lang="scss">
-  @use "..styles/variables.scss";
+  @use "../../src/styles/variables.scss";
   button {
     border: none;
     background-color: #ff3e00;

@@ -9,7 +9,7 @@
   };
 </script>
 
-<Button>Button Text</Button>
+<Button size="small" shadow>Button Text</Button>
 
 <Counter {...counterProps} />
 

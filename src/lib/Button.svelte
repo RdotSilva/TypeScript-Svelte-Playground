@@ -3,7 +3,11 @@
   export let shadow = false;
 </script>
 
-<button class:size-lg={size === "large"} class:size-sm={size === "small"}>
+<button
+  class:size-lg={size === "large"}
+  class:size-sm={size === "small"}
+  class:shadow
+>
   <slot>Fallback</slot>
 </button>
 
@@ -17,11 +21,21 @@
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    &:hover {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), 0 0);
+    }
+
+    &:active {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.4), 0 0);
+    }
     &.size-sm {
       padding: 15px 20px;
     }
     &.size-lg {
       padding: 20px 25px;
+    }
+    &.shadow {
+      box-shadow: 0 0 10px rgba(1, 1, 1, 0.3);
     }
   }
 </style>

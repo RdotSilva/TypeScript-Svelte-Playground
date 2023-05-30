@@ -1,9 +1,12 @@
 <script>
   export let size = "small";
   export let shadow = false;
+  export let bgColor;
+  export let textColor;
 </script>
 
 <button
+  style="background-color: {bgColor}; color: {textColor}"
   class:size-lg={size === "large"}
   class:size-sm={size === "small"}
   class:shadow

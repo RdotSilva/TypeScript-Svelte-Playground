@@ -12,12 +12,15 @@
   class:size-sm={size === "small"}
   class:shadow
 >
+  <div class="left-content"><slot name="leftContent" /></div>
   <slot>Fallback</slot>
 </button>
 
 <style lang="scss">
   @use "../../src/styles/variables.scss";
   button {
+    display: flex;
+    align-items: center;
     border: none;
     background-color: var(--buttonBgColor);
     color: var(--buttonTextColor);
@@ -25,6 +28,9 @@
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    .left-content {
+      margin-right: 10px;
+    }
     &:hover {
       background-image: linear-gradient(rgba(0, 0, 0, 0.4), 0 0);
     }

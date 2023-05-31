@@ -10,9 +10,12 @@
   style:--buttonTextColor={textColor}
   class:size-lg={size === "large"}
   class:size-sm={size === "small"}
+  class:has-left={$$slots.leftContent}
   class:shadow
 >
-  <div class="left-content"><slot name="leftContent" /></div>
+  {#if $$slots.leftContent}
+    <div class="left-content"><slot name="leftContent" /></div>
+  {/if}
   <slot>Fallback</slot>
 </button>
 

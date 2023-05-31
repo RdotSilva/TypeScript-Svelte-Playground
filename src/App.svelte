@@ -9,7 +9,10 @@
   };
 </script>
 
-<Button size="small" shadow bgColor="red" textColor="blue">Button Text</Button>
+<Button size="small" shadow bgColor="red" textColor="blue">
+  <span slot="leftContent">Left</span>
+  Button Text</Button
+>
 
 <Counter {...counterProps} />
 

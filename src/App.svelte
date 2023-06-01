@@ -10,8 +10,14 @@
   };
 </script>
 
-<Button size="small" shadow bgColor="red" textColor="blue">
-  <div style:width="20px" slot="leftContent"><DiBower /></div>
+<Button let:isLeftHovered size="small" shadow bgColor="red" textColor="blue">
+  <div style:width="20px" slot="leftContent">
+    {#if isLeftHovered}
+      <DiBower />
+    {:else}
+      <div>.</div>
+    {/if}
+  </div>
   Button Text</Button
 >
 

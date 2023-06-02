@@ -1,29 +1,27 @@
 <script>
-  import Button from "./lib/Button.svelte";
-  import Counter from "./lib/Counter.svelte";
-  import ReactiveCounter from "./lib/ReactiveCounter.svelte";
-  import DiBower from "svelte-icons/di/DiBower.svelte";
+  import TodoList from "./lib/TodoList.svelte";
+  import { v4 as uuid } from "uuid";
 
-  const counterProps = {
-    maxCount: 10,
-    initialCount: 3,
-  };
+  const todos = [
+    {
+      id: uuid(),
+      title: "Todo 1",
+      completed: true,
+    },
+    {
+      id: uuid(),
+      title: "Todo 2",
+      completed: false,
+    },
+    {
+      id: uuid(),
+      title: "Todo 3",
+      completed: false,
+    },
+  ];
 </script>
 
-<Button let:isLeftHovered size="small" shadow bgColor="red" textColor="blue">
-  <div style:width="20px" slot="leftContent">
-    {#if isLeftHovered}
-      <DiBower />
-    {:else}
-      <div>.</div>
-    {/if}
-  </div>
-  Button Text</Button
->
-
-<Counter {...counterProps} />
-
-<ReactiveCounter shouldCount="true" />
+<TodoList todos />
 
 <style>
 </style>

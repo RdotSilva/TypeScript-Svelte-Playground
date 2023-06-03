@@ -16,12 +16,12 @@
     {
       id: uuid(),
       title: "Todo 3",
-      completed: false,
+      completed: true,
     },
   ];
 </script>
 
-<TodoList todos />
+<TodoList {todos} />
 
 <style>
 </style>

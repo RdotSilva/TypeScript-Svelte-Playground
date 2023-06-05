@@ -19,9 +19,14 @@
       completed: true,
     },
   ];
+
+  // TODO: Add implementation
+  const handleAddTodo = (event) => {
+    console.log(event.detail.title);
+  };
 </script>
 
-<TodoList bind:todos />
+<TodoList {todos} on:addTodo={handleAddTodo} />
 
 <style>
 </style>

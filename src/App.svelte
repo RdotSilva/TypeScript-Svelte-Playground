@@ -22,6 +22,7 @@
 
   // TODO: Add implementation
   const handleAddTodo = (event) => {
+    event.preventDefault();
     console.log(event.detail.title);
   };
 </script>

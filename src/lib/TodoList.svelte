@@ -21,6 +21,12 @@
       inputText = "";
     }
   };
+
+  const handleRemoveTodo = (id) => {
+    dispatch("removetodo", {
+      id,
+    });
+  };
 </script>
 
 <div class="todo-list-wrapper">

@@ -35,9 +35,17 @@
       },
     ];
   };
+
+  /**
+   * Remove a TODO item from the list
+   * @param event The browser event
+   */
+  const handleRemoveTodo = (event) => {
+    todos = todos.filter((todo) => todo.id !== event.detail.id);
+  };
 </script>
 
-<TodoList {todos} on:addTodo={handleAddTodo} />
+<TodoList {todos} on:addtodo={handleAddTodo} on:removetodo={handleRemoveTodo} />
 
 <style>
 </style>

@@ -43,6 +43,19 @@
   const handleRemoveTodo = (event) => {
     todos = todos.filter((todo) => todo.id !== event.detail.id);
   };
+
+  /**
+   * Toggle a TODO item
+   * @param event The browser event
+   */
+  const handleToggleTodo = (event) => {
+    todos = todos.map((todo) => {
+      if (todo.id === event.detail.id) {
+        return { ...todo, completed: event.detail.value };
+      }
+      return { ...todo };
+    });
+  };
 </script>
 
 <TodoList {todos} on:addtodo={handleAddTodo} on:removetodo={handleRemoveTodo} />

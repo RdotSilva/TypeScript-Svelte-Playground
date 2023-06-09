@@ -68,5 +68,11 @@
   on:toggletodo={handleToggleTodo}
 />
 
+<button
+  on:click={() => {
+    todoList.focusInput();
+  }}>Focus input</button
+>
+
 <style>
 </style>

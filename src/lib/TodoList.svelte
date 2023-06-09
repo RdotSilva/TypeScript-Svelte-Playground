@@ -4,8 +4,17 @@
   import Button from "./Button.svelte";
   import { createEventDispatcher } from "svelte";
 
-  export let todos = [];
+  export const readonly = "read only";
+
+  export const clearInput = () => {
+    inputText = "";
+  };
+  export const focusInput = () => {
+    input.focus();
+  };
+
   let inputText = "";
+  let input;
 
   const dispatch = createEventDispatcher();
 
@@ -55,7 +64,7 @@
     {/each}
   </ul>
   <form class="add-todo-form" on:submit|preventDefault={handleAddTodo}>
-    <input bind:value={inputText} />
+    <input bind:this={input} bind:value={inputText} />
     <Button type="submit" disabled={!inputText}>Add</Button>
   </form>
 </div>

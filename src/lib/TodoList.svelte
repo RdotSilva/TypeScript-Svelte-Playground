@@ -2,7 +2,33 @@
 
 <script>
   import Button from "./Button.svelte";
-  import { createEventDispatcher } from "svelte";
+  import {
+    createEventDispatcher,
+    onDestroy,
+    onMount,
+    beforeUpdate,
+    afterUpdate,
+  } from "svelte";
+
+  onMount(() => {
+    console.log("Mounted");
+    return () => {
+      console.log("Destroyed 2");
+    };
+  });
+
+  onDestroy(() => {
+    console.log("Destroyed");
+  });
+
+  beforeUpdate(() => {
+    if (listDiv) {
+      console.log(listDiv.offsetHeight);
+    }
+  });
+  afterUpdate(() => {
+    console.log(listDiv.offsetHeight);
+  });
 
   export const readonly = "read only";
 
@@ -15,6 +41,7 @@
 
   let inputText = "";
   let input;
+  let listDiv;
 
   const dispatch = createEventDispatcher();
 
@@ -45,6 +72,7 @@
 </script>
 
 <div class="todo-list-wrapper">
+  <div class="todo-list" bind:this={listDiv} />
   <ul>
     {#each todos as { id, title, completed } (id)}
       <li>

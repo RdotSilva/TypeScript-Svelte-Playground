@@ -26,8 +26,10 @@
       console.log(listDiv.offsetHeight);
     }
   });
+
   afterUpdate(() => {
-    console.log(listDiv.offsetHeight);
+    if (autoScroll) listDiv.scrollTo(0, listDiv.scrollHeight);
+    autoScroll = false;
   });
 
   export const readonly = "read only";
@@ -42,6 +44,7 @@
   let inputText = "";
   let input;
   let listDiv;
+  let autoScroll;
 
   const dispatch = createEventDispatcher();
 
@@ -96,3 +99,10 @@
     <Button type="submit" disabled={!inputText}>Add</Button>
   </form>
 </div>
+
+<style>
+  .todo-list {
+    max-height: 150px;
+    overflow: auto;
+  }
+</style>

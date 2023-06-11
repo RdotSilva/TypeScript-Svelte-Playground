@@ -1,6 +1,7 @@
 <script>
   import TodoList from "./lib/TodoList.svelte";
   import { v4 as uuid } from "uuid";
+  import { tick } from "svelte";
 
   let todoList;
   let showList = true;
@@ -27,8 +28,10 @@
    * Add a TODO item to the list
    * @param event The browser event
    */
-  const handleAddTodo = (event) => {
-    // event.preventDefault();
+  const handleAddTodo = async (event) => {
+    event.preventDefault();
+    console.log(document.querySelectorAll(".todo-list ul li"));
+
     todos = [
       ...todos,
       {
@@ -37,6 +40,10 @@
         completed: false,
       },
     ];
+    await tick();
+
+    console.log(document.querySelectorAll(".todo-list ul li"));
+    todoList.clearInput();
   };
 
   /**

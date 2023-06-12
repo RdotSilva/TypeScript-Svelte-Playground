@@ -30,7 +30,6 @@
    */
   const handleAddTodo = async (event) => {
     event.preventDefault();
-    console.log(document.querySelectorAll(".todo-list ul li"));
 
     todos = [
       ...todos,
@@ -42,7 +41,6 @@
     ];
     await tick();
 
-    console.log(document.querySelectorAll(".todo-list ul li"));
     todoList.clearInput();
   };
 

@@ -2,37 +2,25 @@
 
 <script>
   import Button from "./Button.svelte";
-  import {
-    createEventDispatcher,
-    onDestroy,
-    onMount,
-    beforeUpdate,
-    afterUpdate,
-  } from "svelte";
-
-  onMount(() => {
-    console.log("Mounted");
-    return () => {
-      console.log("Destroyed 2");
-    };
-  });
-
-  onDestroy(() => {
-    console.log("Destroyed");
-  });
-
-  beforeUpdate(() => {
-    if (listDiv) {
-      console.log(listDiv.offsetHeight);
-    }
-  });
+  import { createEventDispatcher, afterUpdate } from "svelte";
+  import FaRegTrashAlt from "svelte-icons/fa/FaRegTrashAlt.svelte";
 
   afterUpdate(() => {
-    if (autoScroll) listDiv.scrollTo(0, listDivScrollHeight);
-    autoScroll = false;
+    if (autoscroll) listDiv.scrollTo(0, listDivScrollHeight);
+    autoscroll = false;
   });
 
-  export const readonly = "read only";
+  export let todos = [];
+  let prevTodos = todos;
+  let inputText = "";
+  let input, listDiv, autoscroll, listDivScrollHeight;
+
+  const dispatch = createEventDispatcher();
+
+  $: {
+    autoscroll = todos.length > prevTodos.length;
+    prevTodos = todos;
+  }
 
   export const clearInput = () => {
     inputText = "";
@@ -40,14 +28,6 @@
   export const focusInput = () => {
     input.focus();
   };
-
-  let inputText = "";
-  let input;
-  let listDiv;
-  let autoScroll;
-  let listDivScrollHeight;
-
-  const dispatch = createEventDispatcher();
 
   const handleAddTodo = () => {
     const isNotCancelled = dispatch(

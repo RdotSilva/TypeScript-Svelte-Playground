@@ -22,6 +22,12 @@
       title: "Todo 3",
       completed: true,
     },
+    {
+      id: uuid(),
+      title:
+        "A long long long long long long long long long long long long long long long long long long todo",
+      completed: false,
+    },
   ];
 
   /**

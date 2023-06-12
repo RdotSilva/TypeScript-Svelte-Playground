@@ -14,7 +14,7 @@
   class:size-sm={size === "small"}
   class:has-left={$$slots.leftContent}
   class:shadow
-  >6
+>
   {#if $$slots.leftContent}
     <div
       class="left-content"

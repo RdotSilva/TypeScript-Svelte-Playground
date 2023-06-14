@@ -6,29 +6,23 @@
   let todoList;
   let showList = true;
 
-  let todos = [
-    {
-      id: uuid(),
-      title: "Todo 1",
-      completed: true,
-    },
-    {
-      id: uuid(),
-      title: "Todo 2",
-      completed: false,
-    },
-    {
-      id: uuid(),
-      title: "Todo 3",
-      completed: true,
-    },
-    {
-      id: uuid(),
-      title:
-        "A long long long long long long long long long long long long long long long long long long todo",
-      completed: false,
-    },
-  ];
+  let todos = null;
+  let error = null;
+  let isLoading = false;
+
+  const loadTodos = async () => {
+    isLoading = true;
+    await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10").then(
+      async (response) => {
+        if (response.ok) {
+          todos = await response.json();
+        } else {
+          error = "An error has occurred";
+        }
+      }
+    );
+    isLoading = false;
+  };
 
   /**
    * Add a TODO item to the list

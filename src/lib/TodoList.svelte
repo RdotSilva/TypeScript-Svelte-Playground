@@ -92,7 +92,9 @@
   </div>
   <form class="add-todo-form" on:submit|preventDefault={handleAddTodo}>
     <input bind:this={input} bind:value={inputText} placeholder="New Todo" />
-    <Button type="submit" disabled={!inputText}>Add</Button>
+    <Button class="add-todo-button" type="submit" disabled={!inputText}
+      >Add</Button
+    >
   </form>
 </div>
 

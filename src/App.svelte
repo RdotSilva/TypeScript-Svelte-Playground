@@ -71,15 +71,17 @@
   Show/Hide list
 </label>
 {#if showList}
-  <div style:max-width="200px">
-    <TodoList
-      {todos}
-      bind:this={todoList}
-      on:addtodo={handleAddTodo}
-      on:removetodo={handleRemoveTodo}
-      on:toggletodo={handleToggleTodo}
-    />
-  </div>
+  {#await loadTodos then todos}
+    <div style:max-width="200px">
+      <TodoList
+        {todos}
+        bind:this={todoList}
+        on:addtodo={handleAddTodo}
+        on:removetodo={handleRemoveTodo}
+        on:toggletodo={handleToggleTodo}
+      />
+    </div>
+  {/await}
 {/if}
 
 <style>

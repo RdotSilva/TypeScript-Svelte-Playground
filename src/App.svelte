@@ -15,6 +15,8 @@
       (response) => {
         if (response.ok) {
           return response.json();
+        } else {
+          throw new Error("An error has occurred.");
         }
       }
     );
@@ -81,6 +83,8 @@
         on:toggletodo={handleToggleTodo}
       />
     </div>
+  {:catch error}
+    <p>{error.message || "An error has occurred"}</p>
   {/await}
   <button
     on:click={() => {

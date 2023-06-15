@@ -11,18 +11,16 @@
   let isLoading = false;
 
   const loadTodos = async () => {
-    isLoading = true;
-    await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10").then(
-      async (response) => {
+    return fetch("https://jsonplaceholder.typicode.com/todos?_limit=10").then(
+      (response) => {
         if (response.ok) {
-          todos = await response.json();
-        } else {
-          error = "An error has occurred";
+          return response.json();
         }
       }
     );
-    isLoading = false;
   };
+
+  let promise = loadTodos();
 
   /**
    * Add a TODO item to the list
@@ -71,8 +69,10 @@
   Show/Hide list
 </label>
 {#if showList}
-  {#await loadTodos then todos}
-    <div style:max-width="200px">
+  {#await promise}
+    <p>Loading...</p>
+  {:then todos}
+    <div style:max-width="400px">
       <TodoList
         {todos}
         bind:this={todoList}
@@ -82,6 +82,11 @@
       />
     </div>
   {/await}
+  <button
+    on:click={() => {
+      promise = loadTodos();
+    }}>Refresh</button
+  >
 {/if}
 
 <style>

@@ -22,8 +22,6 @@
     );
   };
 
-  let promise = loadTodos();
-
   /**
    * Add a TODO item to the list
    * @param event The browser event
@@ -70,28 +68,7 @@
   <input type="checkbox" bind:checked={showList} />
   Show/Hide list
 </label>
-{#if showList}
-  {#await promise}
-    <p>Loading...</p>
-  {:then todos}
-    <div style:max-width="400px">
-      <TodoList
-        {todos}
-        bind:this={todoList}
-        on:addtodo={handleAddTodo}
-        on:removetodo={handleRemoveTodo}
-        on:toggletodo={handleToggleTodo}
-      />
-    </div>
-  {:catch error}
-    <p>{error.message || "An error has occurred"}</p>
-  {/await}
-  <button
-    on:click={() => {
-      promise = loadTodos();
-    }}>Refresh</button
-  >
-{/if}
+{#if showList}{/if}
 
 <style>
 </style>

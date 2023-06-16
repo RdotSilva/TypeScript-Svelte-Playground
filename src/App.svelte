@@ -1,7 +1,7 @@
 <script>
   import TodoList from "./lib/TodoList.svelte";
   import { v4 as uuid } from "uuid";
-  import { tick } from "svelte";
+  import { tick, onMount } from "svelte";
 
   let todoList;
   let showList = true;
@@ -10,11 +10,15 @@
   let error = null;
   let isLoading = false;
 
+  onMount(() => {
+    loadTodos();
+  });
+
   const loadTodos = async () => {
-    return fetch("https://jsonplaceholder.typicode.com/todos?_limit=10").then(
-      (response) => {
+    await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10").then(
+      async (response) => {
         if (response.ok) {
-          return response.json();
+          todos = await response.json();
         } else {
           throw new Error("An error has occurred.");
         }

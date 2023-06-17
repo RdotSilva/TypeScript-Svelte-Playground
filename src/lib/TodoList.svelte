@@ -11,6 +11,9 @@
   });
 
   export let todos = null;
+  export let error = null;
+  export let isLoading = false;
+
   let prevTodos = todos;
   let inputText = "";
   let input, listDiv, autoscroll, listDivScrollHeight;
@@ -56,11 +59,15 @@
 </script>
 
 <div class="todo-list-wrapper">
-  {#if todos}
+  {#if isLoading}
+    <p class="state-text">Loading...</p>
+  {:else if error}
+    <p class="state-text">{error}</p>
+  {:else if todos}
     <div class="todo-list" bind:this={listDiv}>
       <div bind:offsetHeight={listDivScrollHeight}>
         {#if todos.length === 0}
-          <p class="no-items-text">No todos yet</p>
+          <p class="state-text">No todos yet</p>
         {:else}
           <ul>
             {#each todos as { id, title, completed } (id)}

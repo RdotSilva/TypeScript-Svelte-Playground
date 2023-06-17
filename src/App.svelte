@@ -24,6 +24,7 @@
         }
       }
     );
+    isLoading = false;
   };
 
   /**
@@ -72,7 +73,19 @@
   <input type="checkbox" bind:checked={showList} />
   Show/Hide list
 </label>
-{#if showList}{/if}
+{#if showList}
+  <div style:max-width="400px">
+    <TodoList
+      {todos}
+      {error}
+      {isLoading}
+      bind:this={todoList}
+      on:addtodo={handleAddTodo}
+      on:removetodo={handleRemoveTodo}
+      on:toggletodo={handleToggleTodo}
+    />
+  </div>
+{/if}
 
 <style>
 </style>

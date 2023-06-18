@@ -9,6 +9,7 @@
   let todos = null;
   let error = null;
   let isLoading = false;
+  let isAdding = false;
 
   onMount(() => {
     loadTodos();
@@ -34,6 +35,8 @@
   const handleAddTodo = async (event) => {
     event.preventDefault();
 
+    isAdding = true;
+
     await fetch("https://jsonplaceholder.typicode.com/todos", {
       method: "POST",
       body: JSON.stringify({
@@ -54,6 +57,7 @@
       }
     });
 
+    isAdding = false;
     await tick();
     todoList.focusInput();
   };
@@ -90,6 +94,7 @@
       {todos}
       {error}
       {isLoading}
+      disableAdding={isAdding}
       bind:this={todoList}
       on:addtodo={handleAddTodo}
       on:removetodo={handleRemoveTodo}

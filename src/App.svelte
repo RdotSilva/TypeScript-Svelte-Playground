@@ -34,17 +34,28 @@
   const handleAddTodo = async (event) => {
     event.preventDefault();
 
-    todos = [
-      ...todos,
-      {
-        id: uuid(),
+    await fetch("https://jsonplaceholder.typicode.com/todos", {
+      method: "POST",
+      body: JSON.stringify({
         title: event.detail.title,
         completed: false,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
       },
-    ];
-    await tick();
+    }).then(async (response) => {
+      if (response.ok) {
+        const todo = await response.json();
+        todos = [...todos, { ...todo, id: uuid() }];
 
-    todoList.clearInput();
+        todoList.clearInput();
+      } else {
+        alert("An error has occurred.");
+      }
+    });
+
+    await tick();
+    todoList.focusInput();
   };
 
   /**

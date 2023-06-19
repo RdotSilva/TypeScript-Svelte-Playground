@@ -10,6 +10,7 @@
   let error = null;
   let isLoading = false;
   let isAdding = false;
+  let disabledItems = [];
 
   onMount(() => {
     loadTodos();
@@ -69,6 +70,10 @@
   const handleRemoveTodo = async (event) => {
     const id = event.detail.id;
 
+    if (disabledItems.includes(id)) return;
+
+    disabledItems = [...disabledItems, id];
+
     await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
       method: "DELETE",
     }).then((response) => {
@@ -78,6 +83,8 @@
         alert("An error has occurred.");
       }
     });
+
+    disabledItems = disabledItems.filter((itemId) => itemId !== id);
   };
 
   /**
@@ -104,6 +111,7 @@
       {todos}
       {error}
       {isLoading}
+      {disabledItems}
       disableAdding={isAdding}
       bind:this={todoList}
       on:addtodo={handleAddTodo}

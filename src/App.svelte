@@ -66,8 +66,18 @@
    * Remove a TODO item from the list
    * @param event The browser event
    */
-  const handleRemoveTodo = (event) => {
-    todos = todos.filter((todo) => todo.id !== event.detail.id);
+  const handleRemoveTodo = async (event) => {
+    const id = event.detail.id;
+
+    await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      method: "DELETE",
+    }).then((response) => {
+      if (response.ok) {
+        todos = todos.filter((t) => t.id !== event.detail.id);
+      } else {
+        alert("An error has occurred.");
+      }
+    });
   };
 
   /**

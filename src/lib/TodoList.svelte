@@ -122,7 +122,7 @@
   .todo-list-wrapper {
     background-color: #424242;
     border: 1px solid #4b4b4b;
-    .no-items-text {
+    .state-text {
       margin: 0;
       padding: 15px;
       text-align: center;
@@ -165,6 +165,10 @@
             right: 10px;
             cursor: pointer;
             display: none;
+            &:disabled {
+              opacity: 0.4;
+              cursor: not-allowed;
+            }
             :global(svg) {
               fill: #bd1414;
             }

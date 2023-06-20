@@ -72,30 +72,35 @@
           <p class="state-text">No todos yet</p>
         {:else}
           <ul>
-            {#each todos as { id, title, completed } (id)}
-              <li class:completed>
-                <label>
-                  <input
-                    disabled={disabledItems.includes(id)}
-                    on:input={(event) => {
-                      event.currentTarget.checked = completed;
-                      handleToggleTodo(id, !completed);
-                    }}
-                    type="checkbox"
-                    checked={completed}
-                  />
-                  {title}
-                </label>
-                <button
-                  disabled={disabledItems.includes(id)}
-                  class="remove-todo-button"
-                  aria-label="Remove todo: {title}"
-                  on:click={() => handleRemoveTodo(id)}
-                >
-                  <span style:width="10px" style:display="inline-block">
-                    <FaRegTrashAlt />
-                  </span>
-                </button>
+            {#each todos as todo, index (todo.id)}
+              {@const { id, completed, title } = todo}
+              <li>
+                <slot {todo} {index} {handleToggleTodo}>
+                  <div class:completed>
+                    <label>
+                      <input
+                        disabled={disabledItems.includes(id)}
+                        on:input={(event) => {
+                          event.currentTarget.checked = completed;
+                          handleToggleTodo(id, !completed);
+                        }}
+                        type="checkbox"
+                        checked={completed}
+                      />
+                      <slot name="title">{title}</slot>
+                    </label>
+                    <button
+                      disabled={disabledItems.includes(id)}
+                      class="remove-todo-button"
+                      aria-label="Remove todo: {title}"
+                      on:click={() => handleRemoveTodo(id)}
+                    >
+                      <span style:width="10px" style:display="inline-block">
+                        <FaRegTrashAlt />
+                      </span>
+                    </button>
+                  </div>
+                </slot>
               </li>
             {/each}
           </ul>

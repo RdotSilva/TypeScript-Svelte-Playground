@@ -141,9 +141,11 @@
       on:addtodo={handleAddTodo}
       on:removetodo={handleRemoveTodo}
       on:toggletodo={handleToggleTodo}
-    />
+      let:todo
+      let:handleToggleTodo
+      let:index
+    >
+      <svelte:fragment slot="title">{index + 1}- {todo.title}</svelte:fragment>
+    </TodoList>
   </div>
 {/if}
-
-<style>
-</style>

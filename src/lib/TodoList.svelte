@@ -139,7 +139,7 @@
         margin: 0;
         padding: 10px;
         list-style: none;
-        li {
+        li > div {
           margin-bottom: 5px;
           display: flex;
           align-items: center;

@@ -12,12 +12,17 @@ export const longpress = (node, options) => {
     clearTimeout(timer);
   };
 
+  node.addEventListener("mousedown", handleMouseDown);
+  node.addEventListener("mouseup", handleMouseUp);
+
   return {
     update(newOptions) {
       options = newOptions;
     },
     destroy() {
       clearTimeout(timer);
+      node.removeEventListener("mousedown", handleMouseDown);
+      node.removeEventListener("mouseup", handleMouseUp);
     },
   };
 };

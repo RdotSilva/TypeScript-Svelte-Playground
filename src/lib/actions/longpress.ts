@@ -1,12 +1,23 @@
 export const longpress = (node, options) => {
-  console.log(node, options);
+  let timer;
+
+  const handleMouseDown = () => {
+    const { duration = 2000 } = options;
+    timer = setTimeout(() => {
+      node.dispatchEvent(new CustomEvent("longpress"));
+    }, duration);
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(timer);
+  };
 
   return {
     update(newOptions) {
-      console.log(newOptions);
+      options = newOptions;
     },
     destroy() {
-      console.log("destroyed");
+      clearTimeout(timer);
     },
   };
 };

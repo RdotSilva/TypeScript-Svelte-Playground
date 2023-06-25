@@ -4,6 +4,15 @@
   import "tippy.js/dist/tippy.css";
 
   let button;
+
+  onMount(() => {
+    tippy(".tooltip", {
+      content: "tooltip content",
+    });
+    tippy(button, {
+      content: "text",
+    });
+  });
 </script>
 
 <button class="tooltip">Button</button>

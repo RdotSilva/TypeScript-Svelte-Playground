@@ -1,14 +1,15 @@
 <script>
-  import { tippyAction } from "./lib/actions/tippy";
-
-  let content = "Hello";
+  import Home from "./lib/pages/Home.svelte";
+  import Settings from "./lib/pages/Settings.svelte";
 </script>
 
-<input bind:value={content} />
+<nav>
+  <a href="#/">Home</a>
+  <a href="#/settings">Setting</a>
+</nav>
 
-<button use:tippyAction={{ content, placement: "right", theme: "light" }}
-  >Button</button
->
+<Home />
+<Settings />
 
 <style>
 </style>

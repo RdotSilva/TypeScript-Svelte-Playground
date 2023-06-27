@@ -1,13 +1,25 @@
 <script>
+  import { onMount } from "svelte";
   import Home from "./lib/pages/Home.svelte";
   import Settings from "./lib/pages/Settings.svelte";
+
+  let page;
+
+  const onRouteChange = () => {
+    const path = window.location.hash.slice(1);
+    if (path === "/") {
+      page = "home";
+    } else if (path === "/settings") {
+      page = "settings";
+    } else {
+      window.location.hash = "/";
+    }
+  };
+
+  onMount(onRouteChange);
 </script>
 
-<svelte:window
-  on:hashchange={() => {
-    console.log("Hash Changed");
-  }}
-/>
+<svelte:window on:hashchange={onRouteChange} />
 
 <nav>
   <a href="#/">Home</a>

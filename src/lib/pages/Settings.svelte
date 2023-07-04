@@ -1,5 +1,6 @@
 <script>
   import settings from "../stores/settings";
+  import direction from "../stores/direction";
 </script>
 
 <h2>Settings</h2>
@@ -19,6 +20,8 @@
     settings.reset();
   }}>Reset Settings</button
 >
+<br />
+{$direction}
 <br />
 {$settings.colorScheme}
 <br />

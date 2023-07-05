@@ -43,3 +43,8 @@
     value="light"
   /> Light
 </label>
+
+<select bind:value={$settings.language}>
+  <option value="en">English</option>
+  <option value="ar">Arabic</option>
+</select>

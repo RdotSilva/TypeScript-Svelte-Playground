@@ -1,30 +1,24 @@
 <script>
-  import { spring } from "svelte/motion";
-
-  const boxProps = spring(
-    { width: 100, height: 100 },
-    {
-      stiffness: 0.1,
-      damping: 0.3,
-    }
-  );
+  let values = { username: "", email: "", password: "" };
 </script>
 
-<button
-  on:click={async () => {
-    await boxProps.set(
-      {
-        width: Math.random() * 500,
-        height: Math.random() * 500,
-      },
-      {
-        soft: 1,
-      }
-    );
-    console.log("done");
-  }}>Random Box</button
->
+<form>
+  <label for="username">Username:</label><br />
+  <input
+    id="username"
+    name="username"
+    type="text"
+    bind:value={values.username}
+  /><br />
 
-<div
-  style="width: {$boxProps.width}px; height: {$boxProps.height}px; background-color: purple;"
-/>
+  <label for="email">Email:</label><br />
+  <input id="email" name="email" type="email" bind:value={values.email} /><br />
+
+  <label for="password">Password:</label><br />
+  <input
+    id="password"
+    name="password"
+    type="password"
+    bind:value={values.password}
+  /><br />
+</form>

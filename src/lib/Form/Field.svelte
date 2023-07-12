@@ -1,7 +1,7 @@
 <script>
   import { v4 as uuid } from "uuid";
   import { getContext } from "svelte";
-  import formKey from "./form-key";
+  import formKey from "./formKey";
 
   export let name;
   export let type = "text";

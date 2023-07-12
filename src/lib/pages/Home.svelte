@@ -4,7 +4,9 @@
 </script>
 
 <Form
-  on:submit={() => {}}
+  on:submit={(e) => {
+    console.log(e.detail);
+  }}
   initialValues={{ username: "Test", email: "test@test.com" }}
 >
   <Field label="Username" name="username" type="text" validate={() => {}} />

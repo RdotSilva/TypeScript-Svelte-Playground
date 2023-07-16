@@ -1,3 +1,6 @@
+# Svelte TypeScript Playground
+This is a repo used for experimentaion and learning Svelte.
+
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.

@@ -25,3 +25,10 @@ export const validateEmail = (value, label = "Email") => {
   }
   return error;
 };
+
+export const validatePassword = (value) => {
+  let error;
+  if (!value) {
+    error = `Password is required and should include uppercase, lowercase, and numbers.`;
+  }
+};

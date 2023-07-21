@@ -17,3 +17,13 @@ const generateRandomLetter = (): string => {
     Math.floor(Math.random() * (charCodeZ - charCodeA + 1)) + charCodeA;
   return String.fromCharCode(randomCharCode);
 };
+
+/**
+ * Generate a random symbol
+ * @returns A random symbol
+ */
+const generateRandomSymbol = (): string => {
+  const symbols = "!@#$%^&*()_-+={}[]|;:'\"<>,.?/`~";
+  const randomIndex = Math.floor(Math.random() * symbols.length);
+  return symbols[randomIndex];
+};

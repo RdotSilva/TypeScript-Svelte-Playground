@@ -27,3 +27,36 @@ const generateRandomSymbol = (): string => {
   const randomIndex = Math.floor(Math.random() * symbols.length);
   return symbols[randomIndex];
 };
+
+const generateRandomPassword = (length: number): string => {
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  const uppercaseLetters = lowercaseLetters.toUpperCase();
+  const numbers = "0123456789";
+  const symbols = "!@#$%^&*()_-+={}[]|;:'\"<>,.?/`~";
+
+  const allChars = lowercaseLetters + uppercaseLetters + numbers + symbols;
+  let password = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allChars.length);
+    password += allChars[randomIndex];
+  }
+
+  return password;
+};
+
+const generateRandomUsername = (length: number): string => {
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  const uppercaseLetters = lowercaseLetters.toUpperCase();
+  const numbers = "0123456789";
+
+  const allChars = lowercaseLetters + uppercaseLetters + numbers;
+  let username = "";
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allChars.length);
+    username += allChars[randomIndex];
+  }
+
+  return username;
+};

@@ -28,6 +28,11 @@ const generateRandomSymbol = (): string => {
   return symbols[randomIndex];
 };
 
+/**
+ * Generate a random password that includes numbers, letters, and symbols
+ * @param length The length of the password to generate
+ * @returns A random password with numbers, letters, and symbols
+ */
 const generateRandomPassword = (length: number): string => {
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
   const uppercaseLetters = lowercaseLetters.toUpperCase();

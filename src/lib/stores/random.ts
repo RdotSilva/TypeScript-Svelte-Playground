@@ -60,3 +60,46 @@ const generateRandomUsername = (length: number): string => {
 
   return username;
 };
+
+const generateRandomEmail = (domain: string): string => {
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  const numbers = "0123456789";
+
+  const randomUsername = () => {
+    let username = "";
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * lowercaseLetters.length);
+      username += lowercaseLetters[randomIndex];
+    }
+    return username;
+  };
+
+  const randomDomain = () => {
+    let domainName = "";
+    for (let i = 0; i < 6; i++) {
+      const randomIndex = Math.floor(Math.random() * lowercaseLetters.length);
+      domainName += lowercaseLetters[randomIndex];
+    }
+    return domainName;
+  };
+
+  const randomTLD = () => {
+    const topLevelDomains = [
+      ".com",
+      ".net",
+      ".org",
+      ".io",
+      ".co",
+      ".xyz",
+      ".dev",
+    ];
+    const randomIndex = Math.floor(Math.random() * topLevelDomains.length);
+    return topLevelDomains[randomIndex];
+  };
+
+  const username = randomUsername();
+  const domainName = domain || randomDomain();
+  const tld = domain ? domain.slice(domain.lastIndexOf(".")) : randomTLD();
+
+  return `${username}@${domainName}${tld}`;
+};

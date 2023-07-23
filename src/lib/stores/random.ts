@@ -50,6 +50,11 @@ const generateRandomPassword = (length: number): string => {
   return password;
 };
 
+/**
+ * Generate a random username with a max length
+ * @param length Length of the username to generate
+ * @returns A random username containing letters and numbers
+ */
 const generateRandomUsername = (length: number): string => {
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
   const uppercaseLetters = lowercaseLetters.toUpperCase();
@@ -107,4 +112,36 @@ const generateRandomEmail = (domain: string): string => {
   const tld = domain ? domain.slice(domain.lastIndexOf(".")) : randomTLD();
 
   return `${username}@${domainName}${tld}`;
+};
+
+const generateRandomWebsiteURL = (): string => {
+  const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+
+  const randomDomainName = () => {
+    let domainName = "";
+    for (let i = 0; i < 8; i++) {
+      const randomIndex = Math.floor(Math.random() * lowercaseLetters.length);
+      domainName += lowercaseLetters[randomIndex];
+    }
+    return domainName;
+  };
+
+  const randomTLD = () => {
+    const topLevelDomains = [
+      ".com",
+      ".net",
+      ".org",
+      ".io",
+      ".co",
+      ".xyz",
+      ".dev",
+    ];
+    const randomIndex = Math.floor(Math.random() * topLevelDomains.length);
+    return topLevelDomains[randomIndex];
+  };
+
+  const domainName = randomDomainName();
+  const tld = randomTLD();
+
+  return `https://www.${domainName}${tld}`;
 };

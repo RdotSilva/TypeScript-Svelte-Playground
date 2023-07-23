@@ -50,6 +50,11 @@ const generateRandomPassword = (length: number): string => {
   return password;
 };
 
+/**
+ * Generate a random username with a max length
+ * @param length Length of the username to generate
+ * @returns A random username containing letters and numbers
+ */
 const generateRandomUsername = (length: number): string => {
   const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
   const uppercaseLetters = lowercaseLetters.toUpperCase();

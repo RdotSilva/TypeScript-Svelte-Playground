@@ -43,3 +43,10 @@
 </script>
 
 <div bind:this={container} />
+
+<!-- TODO: Add Stage and Layer component -->
+<Stage width={300} height={400}>
+  <Layer>
+    <Rect x="" y="" fill="" />
+  </Layer>
+</Stage>

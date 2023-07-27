@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import Konva from "konva";
+  import { Stage, Layer, Rect } from "../konva";
 
   let container;
 
@@ -44,7 +44,6 @@
 
 <div bind:this={container} />
 
-<!-- TODO: Add Stage and Layer component -->
 <Stage width={300} height={400}>
   <Layer>
     <Rect x="" y="" fill="" />
